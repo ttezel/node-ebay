@@ -1,0 +1,19 @@
+{
+    "name": "ebay"
+  , "description": "Ebay API client for node"
+  , "version": "0.0.1"
+  , "author": "Tolga Tezel"
+  , "keywords": ["ebay"]
+  , "dependencies": { 
+
+  }
+  , "devDependencies": {
+
+  }
+  , "engines": { "node": ">=0.6.0" }
+  , "main": "./ebay"
+  , "repository": {
+        "type": "git"
+      , "url": "http://github.com/ttezel/node-ebay.git"
+    }
+}
