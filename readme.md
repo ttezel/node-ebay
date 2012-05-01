@@ -25,8 +25,8 @@ ebay.get('finding', {}, function (err, data) {
 
 There are just 2 methods; `get` and `post` which make **GET** and **POST** requests to Ebay.
 
-* ebay.get(service, [params], callback)
-* ebay.post(service, [params], callback)
+* `ebay.get(service, [params], callback)`
+* `ebay.post(service, [params], callback)`
 
 ##Arguments
 
