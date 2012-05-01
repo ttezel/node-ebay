@@ -23,18 +23,20 @@ ebay.get('finding', {}, function (err, data) {
 
 ##Methods
 
-There are just two methods, `get` and `post` which make GET and POST requests to Ebay
+There are just 2 methods; `get` and `post` which make **GET** and **POST** requests to Ebay.
 
-###ebay.get(service, [params], callback)
-###ebay.post(service, [params], callback)
+* ebay.get(service, [params], callback)
+* ebay.post(service, [params], callback)
 
-`service`: specifies the Ebay API Service to use. Supported `service`s are:
+##Arguments
+
+* `service`: specifies the Ebay API Service to use. Supported services are:
 
   * `finding`
 
-`params`: the URL parameters object.
+* `params`: the URL parameters object.
 
-`callback`: `function (err, data)` the callback to be invoked on reply. 
+* `callback`: `function (err, data)` the callback to be invoked on reply. 
 
 
 ##What Ebay Services do I have access to?
