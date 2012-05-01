@@ -49,5 +49,7 @@ There are just 2 methods; `get` and `post` which make **GET** and **POST** reque
 
 * `params`: the optional URL parameters object.
 
+Note: Most API calls have required params (e.g. `OPERATION-NAME`). Check the Ebay API docs for more info.
+
 
 * `callback`: `function (err, data)` the callback to be invoked on reply.
