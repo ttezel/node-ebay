@@ -14,6 +14,9 @@ var Ebay = require('ebay')
 
 var ebay = new Ebay()
 
+//
+//  make request to Ebay Finding API
+//
 ebay.get('finding', {}, function (err, data) {
   if(err) throw err
 
