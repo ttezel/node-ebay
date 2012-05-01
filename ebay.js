@@ -18,6 +18,7 @@ var VERBS = ['get', 'post']
 module.exports = Ebay
 
 function Ebay (opts) {
+  if(!this.opts.app_id) throw new Error('must specify `app_id`')
   this.opts = opts
 }
 
@@ -46,6 +47,7 @@ Ebay.prototype.makeRequest = function (verb, service, params, cb) {
   , method: verb.toUpperCase()
   , headers: {
       'X-EBAY-SOA-REQUEST-DATA-FORMAT': 'JSON'
+    , 'X-EBAY-SOA-SECURITY-APPNAME': this.opts.app_id
     }
   }
 

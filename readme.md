@@ -12,12 +12,19 @@ npm install ebay
 ```javascript
 var Ebay = require('ebay')
 
-var ebay = new Ebay()
+var ebay = new Ebay({
+  app_id: '...'
+})
 
 //
 //  make request to Ebay Finding API
 //
-ebay.get('finding', {}, function (err, data) {
+var params = {
+  'OPERATION-NAME': 'findItemsByKeywords'
+, 'keywords': 'shoes'
+}
+
+ebay.get('finding', params, function (err, data) {
   if(err) throw err
 
   console.log(data)
@@ -37,10 +44,10 @@ There are just 2 methods; `get` and `post` which make **GET** and **POST** reque
 
   Supported services are:
 
-  * `finding`: [Ebay Finding API](http://developer.ebay.com/DevZone/finding/Concepts/FindingAPIGuide.html)
+  * `finding`: [Ebay Finding API](http://developer.ebay.com/DevZone/finding/Concepts/MakingACall.html)
 
 
 * `params`: the optional URL parameters object.
 
 
-* `callback`: `function (err, data)` the callback to be invoked on reply. 
+* `callback`: `function (err, data)` the callback to be invoked on reply.

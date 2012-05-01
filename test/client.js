@@ -1,10 +1,12 @@
 var Ebay = require('../ebay')
 
-var ebay = new Ebay()
+var ebay = new Ebay({
+  app_id: '...'
+})
 
 var params = {
   'OPERATION-NAME': 'findItemsByKeywords'
-, 'SECURITY-APPNAME': ''  
+, 'keywords': 'shoes'
 }
 
 ebay.get('finding', params, function (err, data) {
