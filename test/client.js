@@ -5,10 +5,13 @@ var ebay = new Ebay(config)
 
 var params = {
   'OPERATION-NAME': 'findItemsByKeywords'
-, 'keywords': 'shoes'
+, 'keywords': 'harry potter phoenix'
 }
 
 ebay.get('finding', params, function (err, data) {
-  if(err) throw err
-  console.log('data', data)
+  if(err) {
+    console.log('ERROR', err)
+    return
+  }
+  console.log('data', data.findItemsByKeywordsResponse[0])
 })

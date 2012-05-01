@@ -3,13 +3,14 @@ var http = require('http')
   , url = require('url')
 
 //  Ebay Service Endpoints
-var SERVICES = {
+var SERVICE_URLS = {
   finding: 'http://svcs.ebay.com/services/search/FindingService/v1'
 }
 
+var SERVICES = {}
 //  parse Service Endpoints
-Object.keys(SERVICES).forEach(function (key) {
-  SERVICES[key] = url.parse(SERVICES[key])
+Object.keys(SERVICE_URLS).forEach(function (key) {
+  SERVICES[key] = url.parse(SERVICE_URLS[key])
 })
 
 //  Allowed http verbs
@@ -18,16 +19,17 @@ var VERBS = ['get', 'post']
 module.exports = Ebay
 
 function Ebay (opts) {
-  if(!this.opts.app_id) throw new Error('must specify `app_id`')
+  if(!opts || !opts.app_id) {
+    throw new Error('options object must specify `app_id`')
+  }
   this.opts = opts
 }
 
 Ebay.prototype.makeRequest = function (verb, service, params, cb) {
-  if(typeof params === 'function') {
-    cb = params
-    params = null
-  } else if(typeof cb !== 'function') {
-    throw new Error('must provide callback')
+  if(!cb || typeof cb !== 'function')       throw new Error('must provide callback')
+  if(!params || typeof params !== 'object') {
+    var err = new Error('must specify params object')
+    return cb(err, null)
   }
   if(VERBS.indexOf(verb) === -1) {
     var err = new Error('http verb `' + verb + '` not allowed')
@@ -39,16 +41,17 @@ Ebay.prototype.makeRequest = function (verb, service, params, cb) {
     return cb(err, null)
   }
 
+  params['SECURITY-APPNAME'] = this.opts.app_id
+  params['SERVICE-VERSION'] = '1.0.0'
+  params['RESPONSE-DATA-FORMAT'] = 'JSON'
+  params['REST-PAYLOAD'] = true
+
   var qs = querystring.stringify(params)
 
   var opts = {
     host: svc.host
   , path: svc.path + '?' + qs
   , method: verb.toUpperCase()
-  , headers: {
-      'X-EBAY-SOA-REQUEST-DATA-FORMAT': 'JSON'
-    , 'X-EBAY-SOA-SECURITY-APPNAME': this.opts.app_id
-    }
   }
 
   var req = http.request(opts, function (res) {
@@ -75,7 +78,6 @@ Ebay.prototype.makeRequest = function (verb, service, params, cb) {
   })
   req.end()
 }
-
 
 VERBS.forEach(function (verb) {
   Ebay.prototype[verb] = function (service, params, cb) {
