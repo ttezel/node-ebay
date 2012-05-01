@@ -30,14 +30,14 @@ There are just 2 methods; `get` and `post` which make **GET** and **POST** reque
 
 ##Arguments
 
-* `service`: specifies the Ebay API Service to use. 
+* `service`: (String) specifies the Ebay API Service to use. 
 
   Supported services are:
 
   * `finding`: [Ebay Finding API](http://developer.ebay.com/DevZone/finding/Concepts/FindingAPIGuide.html)
 
 
-* `params`: the URL parameters object.
+* `params`: the optional URL parameters object.
 
 
 * `callback`: `function (err, data)` the callback to be invoked on reply. 
