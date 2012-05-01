@@ -9,7 +9,7 @@ npm install ebay
 ```
 
 #Usage
-```
+```javascript
 var Ebay = require('ebay')
 
 var ebay = new Ebay()
