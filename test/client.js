@@ -1,8 +1,7 @@
 var Ebay = require('../ebay')
+  , config = require('../config')
 
-var ebay = new Ebay({
-  app_id: '...'
-})
+var ebay = new Ebay(config)
 
 var params = {
   'OPERATION-NAME': 'findItemsByKeywords'
