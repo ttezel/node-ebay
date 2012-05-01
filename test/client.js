@@ -1,4 +1,6 @@
-var Ebay = require('../ebay')
+var assert = require('assert')
+  , util = require('util')
+  , Ebay = require('../ebay')
   , config = require('../config')
 
 var ebay = new Ebay(config)
@@ -13,5 +15,6 @@ ebay.get('finding', params, function (err, data) {
     console.log('ERROR', err)
     return
   }
-  console.log('data', data.findItemsByKeywordsResponse[0])
+  assert.equal(typeof data, 'object')
+  console.log(util.inspect(data.findItemsByKeywordsResponse[0], false, 20, true))
 })
