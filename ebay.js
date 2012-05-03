@@ -5,6 +5,7 @@ var http = require('http')
 //  Ebay Service Endpoints
 var SERVICE_URLS = {
   finding: 'http://svcs.ebay.com/services/search/FindingService/v1'
+, product: 'http://svcs.sandbox.ebay.com/services/marketplacecatalog/ProductService/v1'
 }
 
 var SERVICES = {}
