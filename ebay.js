@@ -1,11 +1,11 @@
-var http = require('http')
+var https = require('https')
   , querystring = require('querystring')
   , url = require('url')
 
 //  Ebay Service Endpoints
 var SERVICE_URLS = {
-  finding: 'http://svcs.ebay.com/services/search/FindingService/v1'
-, product: 'http://svcs.sandbox.ebay.com/services/marketplacecatalog/ProductService/v1'
+  finding: 'https://svcs.ebay.com/services/search/FindingService/v1'
+, product: 'https://svcs.sandbox.ebay.com/services/marketplacecatalog/ProductService/v1'
 }
 
 var SERVICES = {}
@@ -55,7 +55,7 @@ Ebay.prototype.makeRequest = function (verb, service, params, cb) {
   , method: verb.toUpperCase()
   }
 
-  var req = http.request(opts, function (res) {
+  var req = https.request(opts, function (res) {
     var data = ''
     res.on('data', function (chunk) { data += chunk })
     res.on('end', function () {
